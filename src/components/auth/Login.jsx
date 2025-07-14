@@ -21,19 +21,33 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  console.log('Starting login with:', login); // Debug log
+  
+  try {
     const success = await loginUser(login);
+    console.log('Login response received:', success); // Debug log
+    console.log('Success type:', typeof success); // Debug log
+    console.log('Success truthiness:', !!success); // Debug log
+    
     if (success) {
+      console.log('Login successful, token:', success.token); // Debug log
       const token = success.token;
       auth.handleLogin(token);
       navigate(redirectUrl, { replace: true });
     } else {
+      console.log('Login failed - success is falsy'); // Debug log
       setErrorMessage("Invalid username or password. Please try again.");
     }
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 4000);
-  };
+  } catch (error) {
+    console.error('Login error caught:', error); // Debug log
+    setErrorMessage("An error occurred during login. Please try again.");
+  }
+  
+  setTimeout(() => {
+    setErrorMessage("");
+  }, 4000);
+};
 
   return (
     <div
