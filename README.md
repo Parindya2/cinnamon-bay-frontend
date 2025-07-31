@@ -1,6 +1,6 @@
 # CinnamonBay Hotel Frontend
 
-This is the frontend codebase for the CinnamonBay Hotel booking application. It is built with React, Vite, and Bootstrap, and communicates with a separate backend API (see backend repo).
+This is the frontend codebase for the CinnamonBay Hotel booking application. It is built with React, Vite, and Bootstrap, and communicates with a separate backend API.
 
 ## Features
 - User registration and login
@@ -18,3 +18,6 @@ This is the frontend codebase for the CinnamonBay Hotel booking application. It 
 - React Router
 - JWT Decode
 - Date-fns, Moment
+
+## Backend
+The backend API is available at [cinnamon-bay-backend](https://github.com/Parindya2/cinnamon-bay-backend).
