@@ -1,17 +1,20 @@
-<<<<<<< HEAD
-# React + Vite
+# CinnamonBay Hotel Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend codebase for the CinnamonBay Hotel booking application. It is built with React, Vite, and Bootstrap, and communicates with a separate backend API (see backend repo).
 
-Currently, two official plugins are available:
+## Features
+- User registration and login
+- JWT-based authentication
+- Room listing, filtering, and booking
+- Admin room management (add, edit, delete rooms)
+- Booking management (view, cancel bookings)
+- User profile and booking history
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# cinnamon-bay-frontend
-Frontend for the Cinnamon Bay Hotel Management System (React)
->>>>>>> 45a41889994856194293611f313c963e09ed3fcd
+## Tech Stack
+- React 18
+- Vite
+- Bootstrap 5
+- Axios
+- React Router
+- JWT Decode
+- Date-fns, Moment
