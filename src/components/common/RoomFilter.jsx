@@ -35,7 +35,18 @@ const RoomFilter = ({data, setFilteredData}) => {
       
 
       </select>
-      <button className='btn btn-hotel' type="button" onClick={clearFilter}>Clear Filter</button>
+      <button 
+          type="button" 
+          onClick={clearFilter}
+          style={{
+		         backgroundColor: "#000",
+		         color: "#fff",
+		         border: "none",
+		         borderRadius: "1px",
+		         padding: "10px 20px",
+		         cursor: "pointer"
+	        }}
+          >Clear Filter</button>
     </div>
   )
 }
