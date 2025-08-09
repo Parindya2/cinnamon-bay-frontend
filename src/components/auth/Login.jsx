@@ -167,7 +167,12 @@ const Login = () => {
           <button
             type="submit"
             className="btn btn-dark w-100"
-            style={{ backgroundColor: "#000", color: "#fff", borderRadius: "25px", fontWeight: "bold" }}
+            style={{ backgroundColor: "#000", 
+                     color: "#fff", 
+                     borderRadius: "25px", 
+                     fontWeight: "bold",
+                     paddingTop: "10px",
+                     paddingBottom: "10px" }}
           >
             Login
           </button>
