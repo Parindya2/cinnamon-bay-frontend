@@ -75,38 +75,35 @@ body {
     font-size:medium;
   }
   .vertical-rule{
-    border-left: '0.5px solid black';
+    border-left: 0.5px solid black;
     height: '100vh'
   }
 
 
 
 .parallax {
-  background-image: url("./assets/images/parrall.jpg");
+  background-image: url("./assets/images/balcony.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50vh;
+  height: 60vh;
+  margin-top: 50px;
+  color: white;
+  text-shadow: 1px 2px black;
 }
 
 .header {
   position: relative;
   height: 150px;
   background-size: cover;
-  background-image: url("./assets/images/services4.jpg");
+  background-image: url("./assets/images/balcony.jpg");
   background-position: center center;
 }
 .header-title {
   color: #fff;
   font-size: 4rem;
   align-content: center;
-}
-
-.parallax {
-  margin-top: 50px;
-  color: white;
-  text-shadow: 2px 2px black;
 }
 
 .animated {
@@ -149,12 +146,11 @@ body {
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translate3d(0, -50%, 0);
+    transform: translateY(-40px);
   }
-
   to {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
   }
 }
 
@@ -163,42 +159,60 @@ body {
     opacity: 0;
     transform: translate3d(0, 50%, 0);
   }
-
   to {
     opacity: 1;
     transform: none;
   }
 }
-/* Header overlay */
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .overlay-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-     transform: translate(-50%, -50%);
-    color: #fff;
-    justify-content: flex-start;
-  }
 
 /* The header banner */
 .header-banner {
-  background-image:  url("./assets/images/services-1.jpg");
-   background-size: cover;
+  background-image: url("./assets/images/Main-Pool.jpg");
+  background-size: cover;
   background-position: center;
-   position: relative;
-  height: 80vh;
- }
-
-.header-banner {
   position: relative;
-  height: 500px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  color: white;
+  overflow: hidden;
+}
+
+/* Overlay - dim the background */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Overlay content - center everything */
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  max-width: 90%;
+  padding: 1rem;
+  color: #fff;
+  justify-content: flex-start;
+}
+
+/* Heading styling */
+.overlay-content h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  font-weight: 550;
+  color: rgba(255, 255, 255, 0.2); /* Slight transparency */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  animation: fadeInDown 2s ease-out;
 }
 
 @media only screen and (max-width: 768px) {
@@ -222,3 +236,43 @@ body {
   height: 60px;
   text-align: center;
 }
+
+
+.heading-black {
+  color: black;
+  font-family: 'Inter', serif; /* or your preferred font */
+  font-weight: 700;
+  font-size: 45px;
+}
+
+
+.view-accommodation-link {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(24, 9, 16); /* your hotel brand pink */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.view-accommodation-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: rgb(169, 77, 123);
+  transition: width 0.3s ease;
+}
+
+.view-accommodation-link:hover::after {
+  width: 100%;
+}
+
+.view-accommodation-link:hover {
+  color: rgb(169, 77, 123); /* Optional: same color on hover */
+}
+
+

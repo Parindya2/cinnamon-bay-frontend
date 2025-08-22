@@ -125,7 +125,7 @@ const Login = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="Username"
+              placeholder="Email"
               className="form-control border-0 bg-transparent"
               style={{ outline: "none", boxShadow: "none", backgroundColor: "transparent" }}
               value={login.email}
@@ -178,15 +178,6 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="mt-4 text-center">
-          <p style={{ fontSize: "0.9rem" }}>or login with social platforms</p>
-          <div className="d-flex justify-content-center gap-3">
-            <FaGoogle size={22} />
-            <FaFacebookF size={22} />
-            <FaGithub size={22} />
-            <FaLinkedin size={22} />
-          </div>
-        </div>
       </div>
     </div>
   );
