@@ -108,7 +108,6 @@ const EditRoom = () => {
                   Photo
                 </label>
                 <input
-                  required
                   type="file"
                   className="form-control"
                   id="photo"

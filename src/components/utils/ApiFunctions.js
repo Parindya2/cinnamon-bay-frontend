@@ -2,7 +2,7 @@ import axios from "axios";
 import { ca } from "date-fns/locale";
 
 export const api = axios.create({
-    baseURL : "http://localhost:9192"
+    baseURL : "http://localhost:8080"
 })
 
 export const getHeader = () =>{
@@ -18,6 +18,19 @@ export const getHeader = () =>{
     }
 }
 
+// New function for multipart/form-data requests
+export const getAuthHeader = () => {
+    const token = localStorage.getItem("token");
+    if(!token) {
+        console.error("No token found in localStorage");
+        return{};
+    }
+    return{
+        Authorization: `Bearer ${token}`
+        // Don't set Content-Type for FormData - let browser set it with boundary
+    }
+}
+
 //This function adds a new room to the database
 export async function addRoom(photo, roomType, roomPrice) {
 	const formData = new FormData()
@@ -26,7 +39,7 @@ export async function addRoom(photo, roomType, roomPrice) {
 	formData.append("roomPrice", roomPrice)
 
 	const response = await api.post("/rooms/add/new-room", formData,{
-		headers: getHeader()
+		headers: getAuthHeader()
 	})
 	if (response.status === 201) {
 		return true
@@ -34,7 +47,6 @@ export async function addRoom(photo, roomType, roomPrice) {
 		return false
 	}
 }
-
 
 //This function gets all room types from the database
 export async function getRoomTypes(){
@@ -68,13 +80,24 @@ export async function deleterRoom(roomId){
     }
 }
 
-//This function update a room
+//This function updates a room
 export async function updateRoom(roomId, roomData){
+    const token = localStorage.getItem("token");
+    console.log("Token in updateRoom:", token ? "EXISTS" : "MISSING");
+    
     const formData = new FormData()
     formData.append("roomType", roomData.roomType)
-    formData.append("roomPrice", roomData.roomPrice)
+    formData.append("roomPrice", roomData.roomPrice) 
     formData.append("photo", roomData.photo)
-    const response = await api.put(`/rooms/update/${roomId}`, formData)
+    
+    const headers = {
+        'Authorization': `Bearer ${token}`
+    };
+    console.log("Headers being sent:", headers);
+    
+    const response = await api.patch(`/rooms/update/${roomId}`, formData, {
+        headers: headers
+    })
     return response
 }
 
@@ -103,7 +126,6 @@ export async function bookRoom(roomId, bookingData) {
         }
     }
 }
-
 
 // This function gets all bookings
 export async function getAllBookings() {
@@ -177,19 +199,26 @@ export async function registration(registration){
 export async function login(login){
     try {
         const response = await api.post("/auth/login", login);
-    if(response.status >= 200 && response.status < 300){
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userId", response.data.id);
-        localStorage.setItem("userRoles", JSON.stringify(response.data.roles));
-        return response.data;
-    } else {
-        return null;
-    }
+        if(response.status >= 200 && response.status < 300){
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userId", response.data.id);
+            
+            // Handle both single role string or array of roles
+            if (Array.isArray(response.data.roles)) {
+                localStorage.setItem("userRole", response.data.roles[0]); // Store first role as string
+                localStorage.setItem("userRoles", JSON.stringify(response.data.roles)); // Keep array for compatibility
+            } else {
+                localStorage.setItem("userRole", response.data.roles); // Store as string
+            }
+            
+            return response.data;
+        } else {
+            return null;
+        }
     } catch (error) {
         console.error(error);
         return null;
     }
-    
 }
 
 export async function getUserProfile(userId, token){
