@@ -63,6 +63,21 @@ const CustomerReviews = () => {
           </div>
         </Carousel.Item>
       </Carousel>
+
+      <div className="card p-4 shadow-sm mt-5">
+         <h5 className="mb-3">How was your stay with us?</h5>
+         <p className="text-muted mb-4">We’d love to hear about your experience.</p>
+  
+  
+       {/* Review text */}
+       <div className="mb-3">
+          <textarea className="form-control" rows="4" placeholder="Write your review here..."></textarea>
+       </div>
+  
+       {/* Submit */}
+      <button className="btn btn-primary">Submit Review</button>
+     </div>
+
     </Container>
   );
 };
