@@ -37,7 +37,7 @@ const CustomerReviews = () => {
       <Carousel indicators={true}>
         {/* First slide */}
         <Carousel.Item>
-          <div className="d-flex justify-content-center gap-7">
+          <div className="d-flex justify-content-center gap-6">
             {testimonials.slice(0, 3).map((review, idx) => (
               <Card key={idx} className="p-3 shadow-sm" style={{ width: "18rem", backgroundColor: "#a24c74", color: "white", borderRadius: "12px" }}>
                 <Card.Body>
@@ -51,7 +51,7 @@ const CustomerReviews = () => {
 
         {/* Second slide */}
         <Carousel.Item>
-          <div className="d-flex justify-content-center gap-7">
+          <div className="d-flex justify-content-center gap-6">
             {testimonials.slice(1, 4).map((review, idx) => (
               <Card key={idx} className="p-3 shadow-sm" style={{ width: "18rem", backgroundColor: "#a24c74", color: "white", borderRadius: "12px" }}>
                 <Card.Body>
