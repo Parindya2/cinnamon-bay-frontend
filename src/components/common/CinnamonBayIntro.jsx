@@ -9,7 +9,7 @@ const CinnamonBayIntro = () => {
     <section className="my-5 px-3">
       <Container fluid>
         <Row className="align-items-start">
-          {/* Left: Two images side by side with equal height */}
+          {/* Left */}
           <Col md={6}>
             <div className="d-flex gap-3">
               <div style={{ flex: 1 }}>
@@ -41,7 +41,7 @@ const CinnamonBayIntro = () => {
             </div>
           </Col>
 
-          {/* Right: Clean, nicely aligned description */}
+          {/* Right*/}
           <Col md={6}>
             <div
               style={{
@@ -50,7 +50,7 @@ const CinnamonBayIntro = () => {
                 justifyContent: "flex-start",
                 height: "100%",
                 color: "gray",
-                paddingLeft: "40px",
+                paddingLeft: "35px",
               }}
             >
               <h2 className="fw-bold hotel-color">Cinnamon Bay</h2>
