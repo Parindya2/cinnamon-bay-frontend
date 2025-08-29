@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaChevronLeft } from 'react-icons/fa';
 
 const CustomerReviews = () => {
     const reviews = [
@@ -57,6 +58,43 @@ const CustomerReviews = () => {
         <div>
             <div>
                 <p>TESTIMONIALS</p>
+                <h2>What our Guests Say</h2>
+                <p>
+                    Discover why our guests choose us again and again. Read authentic reviews from travelers 
+                    who have experienced our hospitality and luxury accommodations.
+                </p>
+            </div>
+
+            <div>
+                {currentReviews.map((review) => (
+                    <div
+                       key={review.id}
+                    >
+                        {/* Avatar and Name */}
+                        <div>
+                            <div>{review.avatar}</div>
+                            <h3>{review.name}</h3>
+                        </div>
+
+                        {/*Rating */}
+                        <div>
+                            {renderStars(review.rating)}
+                        </div>
+
+                        {/* Review Text */}
+                        <p>{review.review}</p>
+                    </div>
+                ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div>
+                <button>
+                    <FaChevronLeft className='w-6 h-6'/>
+                </button>
+                <button>
+                    <FaChevronRight className='w-6 h-6'/>
+                </button>
             </div>
         </div>
     </section>
