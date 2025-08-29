@@ -64,19 +64,27 @@ const CustomerReviews = () => {
         </Carousel.Item>
       </Carousel>
 
-      <div className="card p-4 shadow-sm mt-5">
-         <h5 className="mb-3">How was your stay with us?</h5>
-         <p className="text-muted mb-4">We’d love to hear about your experience.</p>
-  
-  
-       {/* Review text */}
-       <div className="mb-3">
-          <textarea className="form-control" rows="4" placeholder="Write your review here..."></textarea>
-       </div>
-  
-       {/* Submit */}
-      <button className="btn btn-primary">Submit Review</button>
-     </div>
+      <div className="flex flex-col items-start gap-2 w-full max-w-md mx-auto mt-8">
+      <div>
+        <h5 className="text-lg font-semibold">How was your stay with us?</h5>
+        <p className="text-gray-600 text-sm">We'd love to hear about your experience.</p>
+      </div>
+
+  <div className="flex w-full gap-3">
+    {/* Input box */}
+    <input
+      type="text"
+      placeholder="Write your review here..."
+      className="flex-1 p-3 rounded-xl bg-gradient-to-r from-gray-800 to-black text-white placeholder-gray-400 focus:outline-none"
+    />
+
+    {/* Submit button */}
+    <button className="px-6 py-3 rounded-xl bg-[#a24c74] text-white font-semibold hover:bg-[#8c3f63] transition-colors">
+      Submit
+    </button>
+  </div>
+</div>
+
 
     </Container>
   );
