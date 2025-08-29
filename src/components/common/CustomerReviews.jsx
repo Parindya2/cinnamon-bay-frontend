@@ -7,69 +7,56 @@ const CustomerReviews = () => {
       id: 1,
       name: "Sarah Johnson",
       rating: 5,
-      review: "Absolutely wonderful stay! The service was exceptional and the rooms were spotless. The staff went above and beyond to make our anniversary special.",
+      review: "Absolutely wonderful stay! The service was exceptional and the rooms were spotless.",
       avatar: "SJ"
     },
     {
       id: 2,
       name: "Michael Chen",
       rating: 5,
-      review: "Best hotel experience I've ever had. The location is perfect, amenities are top-notch, and the breakfast was incredible.",
+      review: "Best hotel experience I've ever had. The location is perfect and amenities are top-notch.",
       avatar: "MC"
     },
     {
       id: 3,
       name: "Emily Rodriguez",
       rating: 4,
-      review: "Beautiful hotel with stunning views. The spa services were relaxing and the restaurant food was delicious.",
+      review: "Beautiful hotel with stunning views. The spa services were relaxing and food was delicious.",
       avatar: "ER"
     },
     {
       id: 4,
       name: "David Thompson",
       rating: 5,
-      review: "Exceeded all expectations! The room was spacious and elegantly decorated. Will definitely be staying here again.",
+      review: "Exceeded all expectations! The room was spacious and elegantly decorated.",
       avatar: "DT"
     },
     {
       id: 5,
       name: "Lisa Park",
       rating: 5,
-      review: "Perfect location and amazing service. The hotel staff made us feel like royalty. The rooftop bar has the best cocktails in the city.",
+      review: "Perfect location and amazing service. The hotel staff made us feel like royalty.",
       avatar: "LP"
     },
     {
       id: 6,
       name: "James Wilson",
       rating: 4,
-      review: "Great hotel with excellent facilities. The gym and pool area were well-maintained. Room service was prompt and the food quality was outstanding.",
+      review: "Great hotel with excellent facilities. Room service was prompt and food quality outstanding.",
       avatar: "JW"
     }
   ];
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const reviewsPerPage = 3;
-  const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+  const [page, setPage] = useState(0);
 
-  const nextReviews = () => {
-    setCurrentPage(prev => (prev + 1) % totalPages);
+  const showNext = () => {
+    if (page < 1) setPage(page + 1);
+    else setPage(0);
   };
 
-  const prevReviews = () => {
-    setCurrentPage(prev => (prev - 1 + totalPages) % totalPages);
-  };
-
-  const startIndex = currentPage * reviewsPerPage;
-  const endIndex = startIndex + reviewsPerPage;
-  const currentReviews = reviews.slice(startIndex, endIndex);
-
-  const renderStars = (rating) => {
-    return [...Array(5)].map((_, index) => (
-      <Star
-        key={index}
-        className={`w-4 h-4 ${index < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
-      />
-    ));
+  const showPrev = () => {
+    if (page > 0) setPage(page - 1);
+    else setPage(1);
   };
 
   return (
@@ -85,37 +72,148 @@ const CustomerReviews = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {currentReviews.map((review) => (
-            <div
-              key={review.id}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center mb-6">
-                <div 
-                  className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                  style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                >
-                  {review.avatar}
+          {page === 0 ? (
+            <>
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
+                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
+                  >
+                    SJ
+                  </div>
+                  <h3 className="font-semibold text-black text-lg">Sarah Johnson</h3>
                 </div>
-                <h3 className="font-semibold text-black text-lg">
-                  {review.name}
-                </h3>
+                <div className="flex items-center mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  "Absolutely wonderful stay! The service was exceptional and the rooms were spotless."
+                </p>
               </div>
 
-              <div className="flex items-center mb-4">
-                {renderStars(review.rating)}
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
+                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
+                  >
+                    MC
+                  </div>
+                  <h3 className="font-semibold text-black text-lg">Michael Chen</h3>
+                </div>
+                <div className="flex items-center mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  "Best hotel experience I've ever had. The location is perfect and amenities are top-notch."
+                </p>
               </div>
 
-              <p className="text-gray-700 leading-relaxed">
-                "{review.review}"
-              </p>
-            </div>
-          ))}
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
+                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
+                  >
+                    ER
+                  </div>
+                  <h3 className="font-semibold text-black text-lg">Emily Rodriguez</h3>
+                </div>
+                <div className="flex items-center mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-gray-300" />
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  "Beautiful hotel with stunning views. The spa services were relaxing and food was delicious."
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
+                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
+                  >
+                    DT
+                  </div>
+                  <h3 className="font-semibold text-black text-lg">David Thompson</h3>
+                </div>
+                <div className="flex items-center mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  "Exceeded all expectations! The room was spacious and elegantly decorated."
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
+                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
+                  >
+                    LP
+                  </div>
+                  <h3 className="font-semibold text-black text-lg">Lisa Park</h3>
+                </div>
+                <div className="flex items-center mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  "Perfect location and amazing service. The hotel staff made us feel like royalty."
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
+                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
+                  >
+                    JW
+                  </div>
+                  <h3 className="font-semibold text-black text-lg">James Wilson</h3>
+                </div>
+                <div className="flex items-center mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-gray-300" />
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  "Great hotel with excellent facilities. Room service was prompt and food quality outstanding."
+                </p>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="flex justify-center items-center gap-4">
           <button
-            onClick={prevReviews}
+            onClick={showPrev}
             className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 text-white hover:scale-110"
             style={{ backgroundColor: 'rgb(169, 77, 123)' }}
           >
@@ -123,7 +221,7 @@ const CustomerReviews = () => {
           </button>
 
           <button
-            onClick={nextReviews}
+            onClick={showNext}
             className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 text-white hover:scale-110"
             style={{ backgroundColor: 'rgb(169, 77, 123)' }}
           >
