@@ -59,10 +59,9 @@ const CustomerReviews = () => {
     setCurrentPage(prev => (prev - 1 + totalPages) % totalPages);
   };
 
-  const currentReviews = reviews.slice(
-    currentPage * reviewsPerPage, 
-    (currentPage * reviewsPerPage) + reviewsPerPage
-  );
+  const startIndex = currentPage * reviewsPerPage;
+  const endIndex = startIndex + reviewsPerPage;
+  const currentReviews = reviews.slice(startIndex, endIndex);
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, index) => (
@@ -76,7 +75,6 @@ const CustomerReviews = () => {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-12">
           <p className="text-sm font-semibold tracking-wider mb-2" style={{ color: 'rgb(169, 77, 123)' }}>
             TESTIMONIALS
@@ -86,14 +84,12 @@ const CustomerReviews = () => {
           </h2>
         </div>
 
-        {/* Reviews Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {currentReviews.map((review) => (
             <div
               key={review.id}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              {/* Avatar and Name */}
               <div className="flex items-center mb-6">
                 <div 
                   className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
@@ -106,12 +102,10 @@ const CustomerReviews = () => {
                 </h3>
               </div>
 
-              {/* Rating */}
               <div className="flex items-center mb-4">
                 {renderStars(review.rating)}
               </div>
 
-              {/* Review Text */}
               <p className="text-gray-700 leading-relaxed">
                 "{review.review}"
               </p>
@@ -119,7 +113,6 @@ const CustomerReviews = () => {
           ))}
         </div>
 
-        {/* Navigation Buttons */}
         <div className="flex justify-center items-center gap-4">
           <button
             onClick={prevReviews}
