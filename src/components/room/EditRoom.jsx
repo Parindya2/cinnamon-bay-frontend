@@ -19,7 +19,6 @@ const EditRoom = () => {
       const selectedImage = e.target.files[0];
       setRoom({...room, photo: selectedImage})
       setImagePreview(URL.createObjectURL(selectedImage))
-  
     }
 
     const handleInputChange = (event) => {
@@ -43,6 +42,26 @@ const EditRoom = () => {
     const handleSubmit = async (e) => {
       e.preventDefault()
 
+      // Debug authentication before making request
+      console.log("=== Authentication Debug ===");
+      console.log("Token:", localStorage.getItem("token"));
+      console.log("UserId:", localStorage.getItem("userId"));
+      console.log("UserRole:", localStorage.getItem("userRole"));
+      console.log("UserRoles:", localStorage.getItem("userRoles"));
+      
+      // Check if token exists and is valid
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          console.log("Token payload:", payload);
+          console.log("Token roles:", payload.roles || payload.authorities);
+          console.log("Token expired:", payload.exp * 1000 < Date.now());
+        } catch (error) {
+          console.error("Invalid token:", error);
+        }
+      }
+
       try {
         const response = await updateRoom(roomId, room)
         if(response.status === 200){
@@ -55,7 +74,8 @@ const EditRoom = () => {
           setErrorMessage("Error updating room")
         }
       } catch (error) {
-        console.error(error)
+        console.error("Full error response:", error.response);
+        console.error("Error message:", error.message);
         setErrorMessage(error.message)
       }
     }
@@ -105,7 +125,7 @@ const EditRoom = () => {
   
               <div className="mb-3">
                 <label htmlFor="photo" className="form-label hotel-color">
-                  Photo
+                  Photo (Optional)
                 </label>
                 <input
                   type="file"

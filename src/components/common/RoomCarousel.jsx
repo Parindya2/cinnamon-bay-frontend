@@ -38,12 +38,32 @@ const RoomCarousel = () => {
         <h2 className=" heading-black" style={{ fontFamily: "'Noto Sans', sans-serif"  }}>Our Accommodation</h2>
         <p className="mb-3 fs-5">Relax in Comfort</p>
         <Link to="/browse-all-rooms" className="view-accommodation-link">
-  View All Accommodation
-</Link>
+            View All Accommodation
+        </Link>
 
       </div>
 
       <Container fluid>
+        {/* Custom styles for carousel control buttons */}
+        <style>
+          {`
+            .carousel-control-prev, .carousel-control-next {
+              width: 5%;
+              opacity: 0.8;
+            }
+            .carousel-control-prev {
+              left: -20px;
+            }
+            .carousel-control-next {
+              right: -20px;
+            }
+            .carousel-control-prev-icon, .carousel-control-next-icon {
+              
+              border-radius: 50%;
+              padding: 15px;
+            }
+          `}
+        </style>
         <Carousel interval={10000} indicators={false}>
           {[...Array(Math.ceil(rooms.length / 4))].map((_, index) => (
             <Carousel.Item key={index}>

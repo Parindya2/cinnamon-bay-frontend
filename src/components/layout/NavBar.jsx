@@ -36,6 +36,7 @@ const NavBar = () => {
 		fontSize: "16px",
 		textDecoration: "none",
 		fontFamily: "'Poppins', sans-serif",
+		transition: "background-color 0.3s ease",
 	}
 
 	const logoStyle = {
@@ -48,7 +49,7 @@ const NavBar = () => {
 	}
 
 	return (
-		<nav className="navbar navbar-expand-lg px-5 shadow sticky-top" style={navStyle}>
+		<nav className="navbar navbar-expand-lg navbar-custom px-5 shadow sticky-top" style={navStyle}>
 			<div className="container-fluid">
 				<Link to="/" className="navbar-brand" style={logoStyle}>
 					CinnamonBay 
@@ -62,7 +63,7 @@ const NavBar = () => {
 					aria-controls="navbarScroll"
 					aria-expanded="false"
 					aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
+			
 				</button>
 
 				<div className="collapse navbar-collapse" id="navbarScroll">

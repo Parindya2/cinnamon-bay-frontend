@@ -6,6 +6,7 @@ import RoomCarousel from '../common/RoomCarousel'
 import RoomSearch from '../common/RoomSearch'
 import { useLocation } from "react-router-dom"
 import CinnamonBayIntro from '../common/CinnamonBayIntro'
+import CustomerReviews from '../common/CustomerReviews'
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
          <Parallax />
          <CinnamonBayIntro />
          <HotelService />
-        
+         <CustomerReviews />
          
       </section>
     </section>
