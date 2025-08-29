@@ -2,51 +2,6 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const CustomerReviews = () => {
-  const reviews = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      rating: 5,
-      review: "Absolutely wonderful stay! The service was exceptional and the rooms were spotless.",
-      avatar: "SJ"
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      rating: 5,
-      review: "Best hotel experience I've ever had. The location is perfect and amenities are top-notch.",
-      avatar: "MC"
-    },
-    {
-      id: 3,
-      name: "Emily Rodriguez",
-      rating: 4,
-      review: "Beautiful hotel with stunning views. The spa services were relaxing and food was delicious.",
-      avatar: "ER"
-    },
-    {
-      id: 4,
-      name: "David Thompson",
-      rating: 5,
-      review: "Exceeded all expectations! The room was spacious and elegantly decorated.",
-      avatar: "DT"
-    },
-    {
-      id: 5,
-      name: "Lisa Park",
-      rating: 5,
-      review: "Perfect location and amazing service. The hotel staff made us feel like royalty.",
-      avatar: "LP"
-    },
-    {
-      id: 6,
-      name: "James Wilson",
-      rating: 4,
-      review: "Great hotel with excellent facilities. Room service was prompt and food quality outstanding.",
-      avatar: "JW"
-    }
-  ];
-
   const [page, setPage] = useState(0);
 
   const showNext = () => {
@@ -59,151 +14,222 @@ const CustomerReviews = () => {
     else setPage(1);
   };
 
+  const sectionStyle = {
+    padding: '64px 16px',
+    backgroundColor: '#f9fafb'
+  };
+
+  const containerStyle = {
+    maxWidth: '1280px',
+    margin: '0 auto'
+  };
+
+  const headerStyle = {
+    textAlign: 'center',
+    marginBottom: '48px'
+  };
+
+  const subtitleStyle = {
+    fontSize: '14px',
+    fontWeight: '600',
+    letterSpacing: '0.1em',
+    marginBottom: '8px',
+    color: 'rgb(169, 77, 123)'
+  };
+
+  const titleStyle = {
+    fontSize: '48px',
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: '16px'
+  };
+
+  const gridStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '32px',
+    marginBottom: '48px'
+  };
+
+  const cardStyle = {
+    backgroundColor: 'white',
+    borderRadius: '16px',
+    padding: '32px',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    transition: 'all 0.3s ease'
+  };
+
+  const avatarContainerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '24px'
+  };
+
+  const avatarStyle = {
+    width: '56px',
+    height: '56px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '18px',
+    marginRight: '16px',
+    backgroundColor: 'rgb(169, 77, 123)'
+  };
+
+  const nameStyle = {
+    fontWeight: '600',
+    color: 'black',
+    fontSize: '18px',
+    margin: 0
+  };
+
+  const starsStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '16px'
+  };
+
+  const reviewStyle = {
+    color: '#374151',
+    lineHeight: '1.6',
+    margin: 0
+  };
+
+  const buttonContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '16px'
+  };
+
+  const buttonStyle = {
+    width: '48px',
+    height: '48px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.2s ease',
+    color: 'white',
+    backgroundColor: 'rgb(169, 77, 123)',
+    border: 'none',
+    cursor: 'pointer'
+  };
+
   return (
-    <section className="py-16 px-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold tracking-wider mb-2" style={{ color: 'rgb(169, 77, 123)' }}>
-            TESTIMONIALS
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            What Our Guests Say
-          </h2>
+    <section style={sectionStyle}>
+      <div style={containerStyle}>
+        <div style={headerStyle}>
+          <p style={subtitleStyle}>TESTIMONIALS</p>
+          <h2 style={titleStyle}>What Our Guests Say</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div style={gridStyle}>
           {page === 0 ? (
             <>
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                  >
-                    SJ
-                  </div>
-                  <h3 className="font-semibold text-black text-lg">Sarah Johnson</h3>
+              <div style={cardStyle}>
+                <div style={avatarContainerStyle}>
+                  <div style={avatarStyle}>SJ</div>
+                  <h3 style={nameStyle}>Sarah Johnson</h3>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <div style={starsStyle}>
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p style={reviewStyle}>
                   "Absolutely wonderful stay! The service was exceptional and the rooms were spotless."
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                  >
-                    MC
-                  </div>
-                  <h3 className="font-semibold text-black text-lg">Michael Chen</h3>
+              <div style={cardStyle}>
+                <div style={avatarContainerStyle}>
+                  <div style={avatarStyle}>MC</div>
+                  <h3 style={nameStyle}>Michael Chen</h3>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <div style={starsStyle}>
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p style={reviewStyle}>
                   "Best hotel experience I've ever had. The location is perfect and amenities are top-notch."
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                  >
-                    ER
-                  </div>
-                  <h3 className="font-semibold text-black text-lg">Emily Rodriguez</h3>
+              <div style={cardStyle}>
+                <div style={avatarContainerStyle}>
+                  <div style={avatarStyle}>ER</div>
+                  <h3 style={nameStyle}>Emily Rodriguez</h3>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-gray-300" />
+                <div style={starsStyle}>
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#d1d5db', fill: '#d1d5db'}} />
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p style={reviewStyle}>
                   "Beautiful hotel with stunning views. The spa services were relaxing and food was delicious."
                 </p>
               </div>
             </>
           ) : (
             <>
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                  >
-                    DT
-                  </div>
-                  <h3 className="font-semibold text-black text-lg">David Thompson</h3>
+              <div style={cardStyle}>
+                <div style={avatarContainerStyle}>
+                  <div style={avatarStyle}>DT</div>
+                  <h3 style={nameStyle}>David Thompson</h3>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <div style={starsStyle}>
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p style={reviewStyle}>
                   "Exceeded all expectations! The room was spacious and elegantly decorated."
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                  >
-                    LP
-                  </div>
-                  <h3 className="font-semibold text-black text-lg">Lisa Park</h3>
+              <div style={cardStyle}>
+                <div style={avatarContainerStyle}>
+                  <div style={avatarStyle}>LP</div>
+                  <h3 style={nameStyle}>Lisa Park</h3>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <div style={starsStyle}>
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p style={reviewStyle}>
                   "Perfect location and amazing service. The hotel staff made us feel like royalty."
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4"
-                    style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-                  >
-                    JW
-                  </div>
-                  <h3 className="font-semibold text-black text-lg">James Wilson</h3>
+              <div style={cardStyle}>
+                <div style={avatarContainerStyle}>
+                  <div style={avatarStyle}>JW</div>
+                  <h3 style={nameStyle}>James Wilson</h3>
                 </div>
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <Star className="w-4 h-4 text-gray-300" />
+                <div style={starsStyle}>
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#fbbf24', fill: '#fbbf24'}} />
+                  <Star style={{width: '16px', height: '16px', color: '#d1d5db', fill: '#d1d5db'}} />
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p style={reviewStyle}>
                   "Great hotel with excellent facilities. Room service was prompt and food quality outstanding."
                 </p>
               </div>
@@ -211,21 +237,13 @@ const CustomerReviews = () => {
           )}
         </div>
 
-        <div className="flex justify-center items-center gap-4">
-          <button
-            onClick={showPrev}
-            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 text-white hover:scale-110"
-            style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-          >
-            <ChevronLeft className="w-6 h-6" />
+        <div style={buttonContainerStyle}>
+          <button onClick={showPrev} style={buttonStyle}>
+            <ChevronLeft style={{width: '24px', height: '24px'}} />
           </button>
 
-          <button
-            onClick={showNext}
-            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 text-white hover:scale-110"
-            style={{ backgroundColor: 'rgb(169, 77, 123)' }}
-          >
-            <ChevronRight className="w-6 h-6" />
+          <button onClick={showNext} style={buttonStyle}>
+            <ChevronRight style={{width: '24px', height: '24px'}} />
           </button>
         </div>
       </div>
